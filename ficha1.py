@@ -38,6 +38,7 @@ print(ex5(n1,n2))
 a=int(input("digite um numero: "))
 b=int(input("digite um numero: "))
 print(ex6(a,b))
+
 c=float(input("digite celcius: "))
 
 print(ex7(c))

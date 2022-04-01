@@ -1,4 +1,3 @@
-from tkinter import N
 
 
 def ex1(arr):
