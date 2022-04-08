@@ -1,6 +1,4 @@
 from random import random
-
-
 import random
 def ex1(arr):
     sum=0
