@@ -1,0 +1,179 @@
+# Exceções:
+# Tratamento controlado de anomalias
+# Por exemplo, uso de variáveis indefinidas, divisãO por 0 (ZERO) ou
+# acesso a ficheiros inexistentes.
+
+# Usa-se o bloco:
+ 
+try:
+	código que pode causar uma anomalia
+except:
+	código de tratamento da exceção
+
+# Exemplo de uma anomalia sem tratamento:
+
+>>> print(a)
+Traceback (most recent call last):
+  File "<pyshell#1>", line 1, in <module>
+    print(a)
+NameError: name 'a' is not defined
+
+-----------------------------------
+
+# Exemplo de uma anomalia tratada
+>>> 
+>>> try:
+	print(a)
+except:
+	print('variavel indefinida')
+
+	
+variavel indefinida
+
+------------------------------------
+
+# Outro exemplo de uma anomalia sem tratamento:
+>>> 
+>>> a = [10, 20, 30, 40, 50]
+>>> 
+>>> print(a[8])
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    print(a[8])
+IndexError: list index out of range
+>>> 
+-------------------------------------
+
+# a anomalia do caso anterior aqui tratada
+
+>>> try:
+	print(a[8])
+except:
+	print('Indice fora dos limites - acesso ilegal')
+
+	
+Indice fora dos limites - acesso ilegal
+>>> 
+
+------------------------------------
+
+# Usando um NameError apropriado quando se sabe 
+# a natureza da possível anomalia.
+
+a = [10, 20, 30, 40, 50]
+
+>>> try:
+	print(a[8])
+except IndexError: # NameError
+	print('Indice fora dos limites - acesso ilegal')
+
+	
+Indice fora dos limites - acesso ilegal
+>>> 
+
+------------------------------------
+
+# Tratamento de uma anomalia
+# O caso da raiz quadrada que não pode ser calculada para um valor megativo
+# Digitando um valor negativo
+
+>>> 
+>>> try:
+	x = int(input('Digite um valor positivo: '))
+	print(math.sqrt(x))
+except ValueError:
+		print('Não pode calcular a raiz quadrada de um numero negativo')
+		print('Mas problema foi tratado e resolvido')
+		x = -x
+		print(math.sqrt(x))
+
+		
+Digite um valor positivo: -5
+Não pode calcular a raiz quadrada de um numero negativo
+Mas problema foi tratado e resolvido
+2.23606797749979
+>>>
+------------------------------------
+
+# O programa anterior no caso de se digitar normaalmente um valor positivo 
+>>> 
+>>> try:
+	x = int(input('Digite um valor positivo: '))
+	print(math.sqrt(x))
+except ValueError:
+	print('Não pode calcular a raiz quadrada de um numero negativo')
+	print('Mas problema foi tratado e resolvido')
+	x = -x
+	print(math.sqrt(x))
+
+	
+Digite um valor positivo: 5
+2.23606797749979
+>>> 
+
+------------------------------------
+
+# A estrutura except aceita a condição else
+# bem como várias exceções
+
+>>> def dividir(a, b):
+	try:
+		c = a/b
+	except ZeroDivisionError: # quando sabemos o NameError
+		print('Nao pode dividir Zero')
+	else:
+		print('A divisao de ', a, ' com ', b, ' = ', c)
+	finally:
+		print('Executando a cláusula finally')
+
+		
+>>> print(dividir(3, 0))
+Nao pode dividir Zero
+Executando a cláusula finally
+None
+>>> 
+
+------------------------------------
+
+# Ficheiros
+# O ficheiro texto.txt existe
+
+try:
+	fo = open('texto.txt', 'r')
+	str = fo.read()
+	print(str)
+	fo.close()
+
+except:
+	print('Problema na abertuta do ficheiro')
+
+>>>>
+Resultado da execução:
+
+===== RESTART: C:\000_Apoio_PIV\REFs_005_excecoes\excecao_fich_existe.py =====
+O lumiar alumia o ISTEC
+
+>>> 
+-----------------------------------------
+
+# Ficheiros
+# O ficheiro ABC.txt não existe
+
+try:
+	fo = open('ABC.txt', 'r')
+	str = fo.read()
+	print(str)
+	fo.close()
+
+except:
+	print('Problema na abertuta do ficheiro')
+
+>>>>
+Resultado da execução:
+
+=== RESTART: C:\000_Apoio_PIV\REFs_005_excecoes\excecao_fich_nao_existe.py ===
+Problema na abertuta do ficheiro
+>>> 
+
+
+
