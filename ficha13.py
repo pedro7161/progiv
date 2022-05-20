@@ -60,7 +60,16 @@ class calculadora():
         return self.x-self.y
 
     def square(self):
-        return "square of first number: ", M.sqrt(self.x), "\n square of second number:  ", M.sqrt(self.y)
+        print("square of first number: ", M.sqrt(self.x),
+              "\nsquare of second number:  ", M.sqrt(self.y))
+
+    def loga(self):
+        print("log of first number: ", M.log10(self.x),
+              "\nlog of second number:  ", M.log10(self.y))
+
+    def sin(self):
+        print("sin of first number: ", M.sin(self.x),
+              "\nsin of second number:  ", M.sin(self.y))
 
 
 nome = input("digite o seu nome: ")
@@ -85,3 +94,16 @@ print("IRS: ", tea1.irs)
 print("Taxa: ", tea1.tax)
 print("Salario liquido: ", tea1.sl)
 print("areas de ensino: ", tea1.areaensino)
+
+
+n1 = int(input("digite um valor"))
+n2 = int(input("digite um valor"))
+
+num = calculadora(n1, n2)
+print("divisao: ", num.div())
+print("multiplicaçao: ", num.mult())
+print("soma: ", num.som())
+print("subtraçao: ", num.sub())
+num.square()
+num.loga()
+num.sin()
