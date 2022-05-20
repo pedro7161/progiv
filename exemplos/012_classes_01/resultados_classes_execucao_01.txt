@@ -1,0 +1,184 @@
+  
+# Exemplos da execução de alguns scripts sobre classes executados isoladamente
+-------------------------------------
+>>>
+>>> # classes_001
+>>> 
+class Pessoa:
+	def __init__(self, nome):
+		self.nome = nome
+	 
+>>> pess = Pessoa('lia matos')
+>>> print(pess.nome)
+lia matos
+>>> 
+------------------------------------
+>>> 
+>>> # classes_002
+>>> class Pessoa:
+	def __init__(self, nome, idade):
+		self.nome = nome
+		self.idade = idade
+
+		
+>>> pess = Pessoa('ana silva', 25)
+>>> print('Nome:', pess.nome);
+Nome: ana silva
+>>> print('Idade:', pess.idade)
+Idade: 25
+>>> 
+-------------------------------------
+
+# classes_003
+ 
+class Pessoa:
+	def __init__(self, nome, idade):
+		self.nome = nome
+		self.idade = idade
+	
+	def setNome(self, nome):
+		self.nome= nome
+	
+	def getNome(self):
+		return self.nome
+
+	def setIdade(self, idade):
+		self.idade= idade
+	
+	def getIdade(self):
+		return self.idade
+
+	
+pess1 = Pessoa('ana silva', 25)
+
+print('Nome:', pess1.nome);
+print('Idade:', pess1.idade)
+
+pess2 = Pessoa('marco gomes', 23)
+pess2.setNome('Ivo Reis')
+
+print('Nome:', pess2.nome);
+print('Idade:', pess2.idade)
+
+Resultado:
+>>>
+>>>
+Nome: ana silva
+Idade: 25
+Nome: Ivo Reis
+Idade: 23
+>>> 
+-------------------------------------
+
+# classes_004
+ 
+class Pessoa:
+	def __init__(self, nome, idade):
+		self.nome = nome
+		self.idade = idade
+	
+	def setNome(self, nome):
+		self.nome= nome
+	
+	def getNome(self):
+		return self.nome
+
+	def setIdade(self, idade):
+		self.idade= idade
+	
+	def getIdade(self):
+		return self.idade
+
+	
+pess1 = Pessoa('ana silva', 25)
+
+print('Nome:', pess1.nome);
+print('Idade:', pess1.idade)
+
+pess2 = Pessoa('marco gomes', 23)
+pess2.setNome('ivo reis')
+print('Nome:', pess2.nome);
+print('Idade:', pess2.idade)
+
+pess1.setNome('lia ana')
+pess1.setIdade(25)
+
+print('Nome:', pess1.getNome());
+print('Idade:', pess1.getIdade())
+
+print('Nome:', pess1.nome)
+
+Resultado:
+>>>
+Nome: ana silva
+Idade: 25
+Nome: ivo reis
+Idade: 23
+Nome: lia ana
+Idade: 25
+Nome: lia ana
+>>> 
+-------------------------------------
+
+# classes_005_heranca
+
+class Pessoa:
+	def __init__(self, nome='', idade=0):
+		self.nome = nome
+		self.idade = idade
+	
+	def setNome(self, nome):
+		self.nome= nome
+	
+	def getNome(self):
+		return self.nome
+
+	def setIdade(self, idade):
+		self.idade= idade
+	
+	def getIdade(self):
+		return self.idade
+
+	
+pess1 = Pessoa('ana silva', 25)
+print('Nome objeto pess1 de Pessoa:', pess1.nome);
+print('Idade objeto pess1 de Pessoa:', pess1.idade)
+
+pess2 = Pessoa('marco gomes', 23)
+print('Nome objeto pess2  de Pessoa:', pess2.nome);
+print('Idade objeto pess2 de Pessoa:', pess2.idade)
+
+pess3 = Pessoa()
+pess3.setNome('lia ana')
+pess3.setIdade(25)
+
+print('Nome objeto pess3 de Pessoa:', pess3.getNome());
+print('Idade objeto pess3 de Pessoa:', pess3.getIdade())
+
+
+# Herança
+class medico(Pessoa):
+        def __init__(self, numOrdem, nome, idade):
+                Pessoa.__init__(self, nome, idade)
+                self.numOrdem=numOrdem
+
+m = medico(12345, 'rui', 40)
+print('Nome objeto m de medico:', m.nome)
+print('Idade objeto m de medico:', m.idade)
+print('Numero da Ordem objeto m de medico:', m.numOrdem)
+
+Resultado:
+>>> 
+Nome objeto pess1 de Pessoa: ana silva
+Idade objeto pess1 de Pessoa: 25
+Nome objeto pess2  de Pessoa: marco gomes
+Idade objeto pess2 de Pessoa: 23
+Nome objeto pess3 de Pessoa: lia ana
+Idade objeto pess3 de Pessoa: 25
+Nome objeto m de medico: rui
+Idade objeto m de medico: 40
+Numero da Ordem objeto m de medico: 12345
+>>> 
+
+
+

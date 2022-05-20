@@ -1,0 +1,148 @@
+  
+# Classes grupo 02
+ 
+# Exemplos da execução de alguns scripts sobre classes executados isoladamente
+-------------------------------------
+
+# classes_006
+
+# classe básica para uma calculadora para somar
+>>> 
+>>> class calc:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+	def soma(self):
+		return self.x + self.y
+
+	
+>>> calc1 =  calc(20,  30)
+>>> 
+>>> print(calc1.soma())
+50
+>>> 
+---------------------------------------------
+
+>>> classes_007
+>>> # class para uma calculadora para realizar operções aritméticas básicas
+>>> 
+>>> class calc:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+	def soma(self):
+		return self.x + self.y
+	def subtrair(self):
+		return self.x - self.y
+	def multiplicar(self):
+		return self.x * self.y
+	def dividir(self):
+		return self.x / self.y
+
+
+>>> calc1 =  calc(20,  30)
+>>> 
+>>> print(calc1.soma())
+50
+>>> print(calc1.subtrair())
+-10
+>>> print(calc1.multiplicar())
+600
+>>> print(calc1.dividir())
+0.6666666666666666
+>>> 
+
+
+---------------------------------------------
+
+>>> # classes_008 com dado private
+>>> 
+class Pessoa:
+	def __init__(self, nome, idade):
+		self.__nome = nome # dado private
+		self.idade = idade
+	
+	def setNome(self, nome):
+		self.__nome = nome
+	
+	def getNome(self):
+		return self.__nome
+
+	def setIdade(self, idade):
+		self.idade= idade
+	
+	def getIdade(self):
+		return self.idade
+
+>>> pess1 = Pessoa('ana silva', 25)
+>>> print('Nome objeto pess1 de Pessoa:', pess1.getNome());
+Nome objeto pess1 de Pessoa: ana silva
+>>> print('Idade objeto pess1 de Pessoa:', pess1.idade)
+Idade objeto pess1 de Pessoa: 25
+>>> 
+>>> # Herança
+>>> class medico(Pessoa):
+	def __init__(self, numOrdem, nome, idade):
+		 Pessoa.__init__(self, nome, idade)
+		 self.numOrdem=numOrdem
+
+		 
+>>> m = medico(12345, 'rui', 40)
+>>> print('Nome objeto m de medico:', m.getNome())
+Nome objeto m de medico: rui
+>>> print('Idade objeto m de medico:', m.idade)
+Idade objeto m de medico: 40
+>>> print('Numero da Ordem objeto m de medico:', m.numOrdem)
+Numero da Ordem objeto m de medico: 12345
+>>> 
+
+---------------------------------------------
+
+# classes_009 com dado protected
+
+class Pessoa:
+	def __init__(self, nome, idade):
+		self._nome = nome # dado protected
+		self.idade = idade
+	
+	def setNome(self, nome):
+		self._nome = nome
+	
+	def getNome(self):
+		return self._nome
+
+	def setIdade(self, idade):
+		self.idade= idade
+	
+	def getIdade(self):
+		return self.idade
+
+pess1 = Pessoa('ana silva', 25)
+print('Nome objeto pess1 de Pessoa:', pess1.getNome());
+print('Idade objeto pess1 de Pessoa:', pess1.idade)
+
+# Herança
+class medico(Pessoa):
+	def __init__(self, numOrdem, nome, idade):
+		 Pessoa.__init__(self, nome, idade)
+		 self.numOrdem=numOrdem
+	def mostra(self):
+		return self._nome
+	
+		 
+m = medico(12345, 'rui', 40)
+print('Nome objeto m de medico:', m.getNome())
+print('Idade objeto m de medico:', m.idade)
+print('Numero da Ordem objeto m de medico:', m.numOrdem)
+print(m.mostra())
+
+RESTART: C:\000_Apoio_PIV\REFs_004_classes_grupo_02\classes_009_dado_protected.py 
+Nome objeto pess1 de Pessoa: ana silva
+Idade objeto pess1 de Pessoa: 25
+Nome objeto m de medico: rui
+Idade objeto m de medico: 40
+Numero da Ordem objeto m de medico: 12345
+rui
+>>> 
+
+

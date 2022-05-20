@@ -1,37 +1,60 @@
 
 class empregado(object):
 
-    def __init__(self, numero, nome):
-        super(empregado, self).__init__(numero, nome)
+    def __init__(self, numero=0, nome='', sb=0):
+        self.numero = numero
+        self.nome = nome
+        self.sb = sb
+        self.tax = self.calctax()
+        self.irs = self.calcirs()
+        self.ss = self.calcSS()
+        self.sl = self.calsalliquid()
 
-    def calctax(salbruto):
-        if salbruto >= 2000.00:
+    def calctax(self):
+        if self.sb >= 2000.00:
             taxa = 0.25
-        if salbruto >= 1000.00 and salbruto < 2000.00:
+        if self.sb >= 1000.00 and self.sb < 2000.00:
             taxa = 0.20
-        if salbruto < 1000.00:
+        if self.sb < 1000.00:
             taxa = 0.175
-        print("IRS: ", taxa)
         return taxa
 
-    def calcirs(salbruto):
-        taxa = empregado.calctax(salbruto)
-        print("salario bruto - irs: ", salbruto-salbruto*taxa)
-        empregado.calcSS(salbruto, salbruto*taxa)
+    def calcirs(self):
+        return self.sb*self.tax
 
-    def calcSS(salbruto, irs):
+    def calcSS(self):
 
-        print("SS: ", (salbruto-irs)*0.11)
-        empregado.calsalliquid((salbruto-irs)-(salbruto-irs)*0.11)
+        return (self.sb-self.irs)*0.11
 
-    def calsalliquid(salliqu):
-        print("salario liquido: ", salliqu)
-
-    class professor():
-        def __init__(self, areaensino):
-            areaensino = ["ti3", "p3"]
+    def calsalliquid(self):
+        return (self.sb-self.irs)-self.ss
 
 
+class professor(empregado):
+    def __init__(self, areaensino=[]):
+        empregado.__init__(self, numero=0, nome='', sb=0)
+        self.areaensino = areaensino
+
+
+nome = input("digite o seu nome: ")
+numero = input("digite o seu numero: ")
 salbruto = float(input("digite o seu salario bruto: "))
-empregado.calcirs(salbruto)
-print("Salario bruto:", salbruto)
+emp1 = empregado(numero, nome, salbruto)
+print("Salario bruto: ", emp1.sb)
+print("SS: ", emp1.ss)
+print("IRS: ", emp1.irs)
+print("Taxa: ", emp1.tax)
+print("Salario liquido: ", emp1.sl)
+disciplinas = []
+nome = input("digite o seu nome: ")
+numero = input("digite o seu numero: ")
+ae = input("digite as areas de ensino separadas por virgula: ")
+disciplinas = ae.split(",")
+salbruto = float(input("digite o seu salario bruto: "))
+tea1 = professor(numero, nome, salbruto, disciplinas)
+print("Salario bruto: ", tea1.sb)
+print("SS: ", tea1.ss)
+print("IRS: ", tea1.irs)
+print("Taxa: ", tea1.tax)
+print("Salario liquido: ", tea1.sl)
+print("areas de ensino: ", tea1.areaensino)
