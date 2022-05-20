@@ -1,4 +1,7 @@
 
+import math as M
+
+
 class empregado(object):
 
     def __init__(self, numero=0, nome='', sb=0):
@@ -31,9 +34,33 @@ class empregado(object):
 
 
 class professor(empregado):
-    def __init__(self, areaensino=[]):
-        empregado.__init__(self, numero=0, nome='', sb=0)
+    def __init__(self, areaensino=[], numero=0, nome='', sb=0):
+        empregado.__init__(self, numero, nome, sb)
         self.areaensino = areaensino
+
+
+class calculadora():
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def mult(self):
+        return self.x*self.y
+
+    def div(self):
+        if(self.x == 0 or self.y == 0):
+            return "nao pode ter valores a 0 na divsao"
+        else:
+            return self.x/self.y
+
+    def som(self):
+        return self.x+self.y
+
+    def sub(self):
+        return self.x-self.y
+
+    def square(self):
+        return "square of first number: ", M.sqrt(self.x), "\n square of second number:  ", M.sqrt(self.y)
 
 
 nome = input("digite o seu nome: ")
@@ -51,7 +78,7 @@ numero = input("digite o seu numero: ")
 ae = input("digite as areas de ensino separadas por virgula: ")
 disciplinas = ae.split(",")
 salbruto = float(input("digite o seu salario bruto: "))
-tea1 = professor(numero, nome, salbruto, disciplinas)
+tea1 = professor(disciplinas, numero, nome, salbruto)
 print("Salario bruto: ", tea1.sb)
 print("SS: ", tea1.ss)
 print("IRS: ", tea1.irs)
